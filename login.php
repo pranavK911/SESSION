@@ -19,7 +19,7 @@ session_start();
     <label >Password</label><br>
     <input type="password" name="password"><br><br>
     <input type="submit" name="login" value="login">
-    <a href="signup.php">Signup</a>
+   <h3> <a href="signup.php">Signup</a></h3>
   </form>
 </body>
 </html>
@@ -37,7 +37,7 @@ session_start();
     }
     else{
      
-     echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN')</script>";
+     echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN OR PLEASE INSERT CORRECT DATA')</script>";
      
     }
   }

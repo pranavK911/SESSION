@@ -33,7 +33,7 @@
                 <input type="radio" name="smedia" value="whatsapp"><label>WhatsApp</label>
                 <input type="radio" name="smedia" value="facebook"><label>Facebook</label><br><br><br><br>
                 <input type="submit" name="sig" value="SIGNUP">
-                <a href="login.php">login</a>
+                <h3> <a href="login.php">login</a></h3>
        </form>
 </body>
 </html>
