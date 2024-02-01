@@ -1,4 +1,5 @@
 <?php
+//  session_start();
   include('connection.php');
 ?>
 
@@ -50,17 +51,29 @@
     $Sm=$_POST['smedia'];
 
    if($fn!="" && $ln!="" && $em!="" && $ps!="" && $id!="" && $gn!="" && $Sm!=""){
-            $query="INSERT INTO registration VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm')";
-            $data=mysqli_query($con,$query);
-            if($data){
-              echo "<script>alert('DATA INSERTED')</script>";
-            }
-            else{
-              echo "<script>alert('DATA NOT INSERTED')</script>";
-            }
+           
+      $IDexit=$_SESSION['i_data'];
+      $query="SELECT *FROM  registration WHERE id ='$id' ";
+      $data=mysqli_query($con,$query);
+      $found=mysqli_num_rows($data);
+      if($found){
+        echo "<script>alert('ENTER NEW ID')</script>";
+      }
+      else{
+        $query="INSERT INTO registration VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm')";
+        $data=mysqli_query($con,$query);
+        if($data){
+          echo "<script>alert('DATA INSERTED')</script>";
+        }
+        else{
+          echo "<script>alert('DATA NOT INSERTED')</script>";
+        }
+      }
     }
-    else{
-      echo "<script>alert('fill the form')</script>";
-    }
+  else{
+   echo "<script>alert('fill the form')</script>";
+  }
 }
 ?>
+ <!-- $query="INSERT INTO registration VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm')";
+            $data=mysqli_query($con,$query); -->
