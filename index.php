@@ -4,13 +4,15 @@
 
     $userid=$_SESSION['i_data'];
     if($userid){
-        echo "<script>alert('LOGIN SUCCESFUL')</script>";
+        // echo "<script>alert('LOGIN SUCCESFUL')</script>";
     }else{
         header('location:login.php');
     }
-    $query="SELECT * FROM  registration WHERE id ='$userid' ";
+    $query="SELECT * FROM  mydata WHERE id ='$userid' ";
     $data=mysqli_query($con,$query);
     $result=mysqli_fetch_assoc($data);
+    // $imagee=$result['image'];
+    // echo $imagee;
 
 ?>
 
@@ -19,147 +21,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Hotel Name</title>
+    <title>Awesome Hotel</title>
     <style>
-        /* Reset some default styles */
-        body, h1, h2, h3, p {
-            margin: 0;
-            padding: 0;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
-
         header {
             background-color: #333;
             color: #fff;
+            padding: 10px 0;
             text-align: center;
-            padding: 1em 0;
+            position: relative;
+        }
+        #user-container {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        #user-image {
+            max-width: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
         }
 
         nav {
             background-color: #444;
-            color: #fff;
+            padding: 10px;
             text-align: center;
-            padding: 0.5em 0;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 1em;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: #555;
         }
 
         section {
-            padding: 2em;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .section-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
         }
 
         footer {
             background-color: #333;
             color: #fff;
+            padding: 10px 0;
             text-align: center;
-            padding: 1em 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
         }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .hotel-info {
-            text-align: center;
-            margin-bottom: 2em;
-        }
-
-        .room {
-            margin: 1em 0;
-            padding: 1em;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .room img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 1em;
-        }
-       /* h1 a {
-        display: block;
-        margin-top: 10px;
-        color: #333;
-        text-decoration: none; 
-     } */
-      .add
-    {
-        text-decoration: none;
-        background-color: rgb(255, 216, 20);
-        height: 40px;
-        width: 150px;
-        color: #000;
-        border-radius: 20px;
-        font-size:20px;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-        border-width: 1px;
-        position: absolute; /* Set position absolute for the button */
-      top: 10px; /* Adjust top value to your preference */
-      right: 10px;
-    }
-    .add:hover{
+        nav .add:hover{
         background-color:  rgb(29 ,161 ,242);
         color: #fff;
-       font-size: 20px;
-    }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>HOTEL VISION</h1>
+    <h1>Awesome Hotel</h1>
+        <div id="user-container">
+            <img id="user-image" src="img/<?php echo $result['image'];?>" alt="User Image">
+            <span id="user-name"><?php echo $result['fn'];?></span>
+        </div>
     </header>
+    <!-- <?php $result['image'];?> -->
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Rooms</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="logout.php" class="add">LOGOUT</a>
     </nav>
-    <section class="container">
-        <div class="hotel-info">
-            <h2>Welcome to Our Hotel
-                 <?php echo $result['fn'];
-                //  echo $result['id'];
-                 ?>
 
-                </h2>
-            <p>Experience luxury at its finest.</p>
-        </div>
-
-        <div class="room">
-            <img src="hotel1.jpg" alt="Deluxe Room Image">
-            <h3>Deluxe Room</h3>
-            <p>Enjoy a spacious and comfortable stay in our deluxe rooms.</p>
-        </div>
-
-        <div class="room">
-            <img src="hotel2.jpg" alt="Executive Suite Image">
-            <h3>Executive Suite</h3>
-            <p>Indulge in luxury with our executive suite, featuring stunning views.</p>
-        </div>
+    <section id="home">
+        <img src="img/lobby.jpg" alt="Hotel Lobby" class="section-image">
+        <h2>Welcome to Awesome Hotel</h2>
+        <p>Experience luxury and comfort at our world-class hotel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </section>
-   <!-- <h1> <a href="logout.php" class="add">logout</a></h1> -->
-  <button class="add"><a href="logout.php">logout</a></button>
+
+    <section id="rooms">
+        <img src="img/room.jpg" alt="Hotel Rooms" class="section-image">
+        <h2>Our Rooms</h2>
+        <p>Discover our spacious and elegantly designed rooms. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </section>
+
+    <section id="about">
+        <img src="img/archi.jpg" alt="About Us" class="section-image">
+        <h2>About Us</h2>
+        
+        <p>Learn about the history and values of Awesome Hotel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </section>
+
+    <section id="contact">
+        <img src="img/rece.jpg" alt="Contact Us" class="section-image">
+        <h2>Contact Us</h2>
+        <p>Have questions or want to book a room? Contact us today! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Awesome Hotel. All rights reserved.
+    </footer>
+
 </body>
-</html>
+</html> 
 
 

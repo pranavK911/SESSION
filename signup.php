@@ -78,7 +78,7 @@
 </head>
 <body>
 
-  <form action="#" method="post">
+  <form action="#" method="post" enctype="multipart/form-data">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" required>
 
@@ -90,6 +90,9 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
+
+    <label for="images">Upload Images</label>
+    <input type="file" name="image" required>
 
     <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
@@ -128,14 +131,18 @@
    if($fn!="" && $ln!="" && $em!="" && $ps!="" && $id!="" && $gn!="" && $Sm!=""){
            
       $IDexit=$_SESSION['i_data'];
-      $query="SELECT *FROM  registration WHERE id ='$id' ";
+      $query="SELECT *FROM  mydata WHERE id ='$id' ";
       $data=mysqli_query($con,$query);
       $found=mysqli_num_rows($data);
       if($found){
         echo "<script>alert('ENTER NEW ID')</script>";
       }
       else{
-        $query="INSERT INTO registration VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm')";
+        $nam=$_FILES['image']['name'];
+        $tempname=$_FILES['image']['tmp_name'];
+        $folder="img/".$nam;
+        move_uploaded_file($tempname,$folder);
+        $query="INSERT INTO mydata VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm','$nam')";
         $data=mysqli_query($con,$query);
         if($data){
           echo "<script>alert('DATA INSERTED')</script>";
@@ -150,5 +157,4 @@
   }
 }
 ?>
- <!-- $query="INSERT INTO registration VALUES('$fn','$ln','$em','$ps','$id','$gn','$Sm')";
-            $data=mysqli_query($con,$query); -->
+ 

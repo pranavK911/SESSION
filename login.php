@@ -85,7 +85,7 @@ session_start();
     $ide=$_POST['id'];
     $pas=$_POST['password'];
 
-    $query="SELECT *FROM  registration WHERE id ='$ide' && password ='$pas' ";
+    $query="SELECT *FROM  mydata WHERE id ='$ide' && password ='$pas' ";
     $data=mysqli_query($con,$query);
     $found=mysqli_num_rows($data);
     if($found){
@@ -94,8 +94,8 @@ session_start();
     }
     else{
      
-    //  echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN OR PLEASE INSERT CORRECT DATA')</script>";
-    echo "<script>alert('BHAAK BOOSDKE')</script>";
+     echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN OR PLEASE INSERT CORRECT DATA')</script>";
+  
      
     }
   }
