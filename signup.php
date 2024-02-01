@@ -1,51 +1,126 @@
 <?php
 //  session_start();
   include('connection.php');
+  error_reporting(0);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150vh;
+    }
+
+    form {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    label {
+      display: flex;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .login-link {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+ .dis{
+   display:flex;
+   justify-content: center;
+   align-items: center;
+}
+  </style>
 </head>
 <body>
-    <h1>This is Resgistration Form</h1><br><br>
-       <form action="#" method="post">
-                <label >First Name</label>
-                <input type="text" name="fn"><br><br>
-                <label >Last Name</label>
-                <input type="text" name="ln"><br><br>
-                <label >Email</label>
-                <input type="email" name="email"><br><br>
-                <label >password</label>
-                <input type="password" name="pswrd"><br><br>
-                <label >ID</label>
-                <input type="text" name="id"><br><br>
-                <label >Gender</label>
-                <select name="gender">
-                    <option value="not selected">Select</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select><br><br>
-                <label >Social Media</label>
-                <input type="radio" name="smedia" value="insta"><label>Insta</label>
-                <input type="radio" name="smedia" value="whatsapp"><label>WhatsApp</label>
-                <input type="radio" name="smedia" value="facebook"><label>Facebook</label><br><br><br><br>
-                <input type="submit" name="sig" value="SIGNUP">
-                <h3> <a href="login.php">login</a></h3>
-       </form>
+
+  <form action="#" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <label >Social Media:</label>
+   <div class="dis">
+ 
+    <input type="radio" id="subscribeYes" name="smedia" value="insta"> Instagram
+    <input type="radio" id="subscribeYes" name="smedia" value="facebook"> Facebook
+    <input type="radio" id="subscribeNo" name="smedia" value="whatsapp" > WhatsApp
+</div>
+    <button type="submit" name="sig">Sign Up</button>
+    <a href="login.php" class="login-link">Already have an account? Login</a>
+  </form>
+
 </body>
 </html>
 
-<?php
 
+<?php
    if(isset($_POST['sig'])){
-    $fn=$_POST['fn'];
-    $ln=$_POST['ln'];
+    $fn=$_POST['firstName'];
+    $ln=$_POST['lastName'];
     $em=$_POST['email'];
-    $ps=$_POST['pswrd'];
+    $ps=$_POST['password'];
     $id=$_POST['id'];
     $gn=$_POST['gender'];
     $Sm=$_POST['smedia'];
@@ -71,7 +146,7 @@
       }
     }
   else{
-   echo "<script>alert('fill the form')</script>";
+   echo "<script>alert('PLEASE INSERT DATA')</script>";
   }
 }
 ?>

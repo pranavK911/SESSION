@@ -93,6 +93,34 @@
             border-radius: 5px;
             margin-bottom: 1em;
         }
+       /* h1 a {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+        text-decoration: none; 
+     } */
+      .add
+    {
+        text-decoration: none;
+        background-color: rgb(255, 216, 20);
+        height: 40px;
+        width: 150px;
+        color: #000;
+        border-radius: 20px;
+        font-size:20px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        border-width: 1px;
+        position: absolute; /* Set position absolute for the button */
+      top: 10px; /* Adjust top value to your preference */
+      right: 10px;
+    }
+    .add:hover{
+        background-color:  rgb(29 ,161 ,242);
+        color: #fff;
+       font-size: 20px;
+    }
     </style>
 </head>
 <body>
@@ -109,7 +137,10 @@
     <section class="container">
         <div class="hotel-info">
             <h2>Welcome to Our Hotel
-                 <?php echo $result['fn'];?>
+                 <?php echo $result['fn'];
+                //  echo $result['id'];
+                 ?>
+
                 </h2>
             <p>Experience luxury at its finest.</p>
         </div>
@@ -126,7 +157,8 @@
             <p>Indulge in luxury with our executive suite, featuring stunning views.</p>
         </div>
     </section>
-   <h1> <a href="logout.php">logout</a></h1>
+   <!-- <h1> <a href="logout.php" class="add">logout</a></h1> -->
+  <button class="add"><a href="logout.php">logout</a></button>
 </body>
 </html>
 

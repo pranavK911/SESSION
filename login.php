@@ -8,21 +8,78 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .signup-link {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>LOGIN HERE</h1>
-  <br><br>
+
   <form action="#" method="post">
-    <label >ID</label><br>
-    <input type="text" name="id"><br><br>
-    <label >Password</label><br>
-    <input type="password" name="password"><br><br>
-    <input type="submit" name="login" value="login">
-   <h3> <a href="signup.php">Signup</a></h3>
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit" name="login">Login</button>
+    <a href="signup.php" class="signup-link">Don't have an account? Sign Up</a>
   </form>
+
 </body>
 </html>
+
 <?php
   if(isset($_POST['login'])){
     $ide=$_POST['id'];
@@ -37,7 +94,8 @@ session_start();
     }
     else{
      
-     echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN OR PLEASE INSERT CORRECT DATA')</script>";
+    //  echo "<script>alert('FIRST INSERT YOUR DATA THEN LOGIN OR PLEASE INSERT CORRECT DATA')</script>";
+    echo "<script>alert('BHAAK BOOSDKE')</script>";
      
     }
   }
